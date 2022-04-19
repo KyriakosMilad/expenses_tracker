@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class NewTransaction extends StatefulWidget {
-  final Function _addTransaction;
+  final Function _addTransactionFunc;
 
-  NewTransaction(this._addTransaction);
+  NewTransaction(this._addTransactionFunc);
 
   @override
   State<NewTransaction> createState() => _NewTransactionState();
@@ -13,6 +13,12 @@ class NewTransaction extends StatefulWidget {
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
+
+  void _addTransaction() {
+    widget._addTransactionFunc(_titleController.text, double.parse(_amountController.text), DateTime.now());
+
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +42,7 @@ class _NewTransactionState extends State<NewTransaction> {
             Container(
               child: TextButton(
                   onPressed: () {
-                    widget._addTransaction(_titleController.text, double.parse(_amountController.text), DateTime.now());
+                    _addTransaction();
                   },
                   child: Text('Add transaction')),
               margin: EdgeInsets.only(top: 10),
