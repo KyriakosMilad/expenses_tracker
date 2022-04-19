@@ -26,6 +26,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        actions: <Widget>[IconButton(onPressed: () {}, icon: Icon(Icons.add))],
       ),
       body: Column(
         children: <Widget>[
@@ -35,6 +36,8 @@ class MyHomePage extends StatelessWidget {
           UserTransactions()
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
     );
   }
 }
