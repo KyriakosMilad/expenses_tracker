@@ -28,13 +28,15 @@ class MyHomePage extends StatelessWidget {
         title: Text(title),
         actions: <Widget>[IconButton(onPressed: () {}, icon: Icon(Icons.add))],
       ),
-      body: Column(
-        children: <Widget>[
-          Card(
-            child: Text('CHART'),
-          ),
-          UserTransactions()
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Card(
+              child: Text('CHART'),
+            ),
+            UserTransactions()
+          ],
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
