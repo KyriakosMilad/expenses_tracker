@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   final Function _addTransaction;
-  final _titleController = TextEditingController();
-  final _amountController = TextEditingController();
 
   NewTransaction(this._addTransaction);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final _titleController = TextEditingController();
+  final _amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,7 @@ class NewTransaction extends StatelessWidget {
             Container(
               child: TextButton(
                   onPressed: () {
-                    _addTransaction(_titleController.text, double.parse(_amountController.text), DateTime.now());
+                    widget._addTransaction(_titleController.text, double.parse(_amountController.text), DateTime.now());
                   },
                   child: Text('Add transaction')),
               margin: EdgeInsets.only(top: 10),
