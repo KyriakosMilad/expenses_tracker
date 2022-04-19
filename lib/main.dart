@@ -41,6 +41,9 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
+          Card(
+            child: Text('CHART'),
+          ),
           Column(
             children: <Widget>[
               ...transactions.map((e) => Card(
