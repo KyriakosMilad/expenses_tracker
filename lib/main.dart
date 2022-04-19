@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,22 +21,43 @@ class MyHomePage extends StatelessWidget {
 
   MyHomePage(this.title);
 
+  List<Transaction> transactions = [
+    Transaction(
+        id: 'id0', amount: 55.4, title: 'Buy app', date: DateTime.now()),
+    Transaction(
+        id: 'id1', amount: 99.9, title: 'Buy food', date: DateTime.now()),
+    Transaction(
+        id: 'id2',
+        amount: 9.55,
+        title: 'Buy tea with mint',
+        date: DateTime.now()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Hi',
-            ),
-          ],
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: Column(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              ...transactions.map((e) => Card(
+                    child: Row(children: [
+                      Text(e.amount.toString()),
+                      Column(
+                        children: [
+                          Text(e.title),
+                          Text(e.date.toString()),
+                        ],
+                      )
+                    ]),
+                  ))
+            ],
+          )
+        ],
+      ),
     );
   }
 }
