@@ -9,10 +9,9 @@ class ChartBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(percentage);
     return Column(
       children: [
-        Text(amount.toString()),
+        FittedBox(child: Text('\$${amount.toStringAsFixed(2)}')),
         SizedBox(
           height: 5,
         ),
@@ -33,10 +32,10 @@ class ChartBar extends StatelessWidget {
             ],
           ),
         ),
-        Text(day),
         SizedBox(
           height: 5,
         ),
+        Text(day),
       ],
     );
   }

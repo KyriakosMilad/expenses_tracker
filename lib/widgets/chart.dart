@@ -40,12 +40,16 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+        child: Container(
+      padding: EdgeInsets.all(10),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ...transactionsLastWeek
-              .map((t) => ChartBar(day: t['day'].toString(), amount: t['amount'] as double, percentage: getDayPercentage(t['amount'] as double))),
+          ...transactionsLastWeek.map((t) => Flexible(
+              fit: FlexFit.tight,
+              child: ChartBar(day: t['day'].toString(), amount: t['amount'] as double, percentage: getDayPercentage(t['amount'] as double)))),
         ],
       ),
-    );
+    ));
   }
 }
