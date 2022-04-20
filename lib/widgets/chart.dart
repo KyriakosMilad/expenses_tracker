@@ -45,7 +45,7 @@ class Chart extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ...transactionsLastWeek.map((t) => Flexible(
+          ...transactionsLastWeek.reversed.toList().map((t) => Flexible(
               fit: FlexFit.tight,
               child: ChartBar(day: t['day'].toString(), amount: t['amount'] as double, percentage: getDayPercentage(t['amount'] as double)))),
         ],
