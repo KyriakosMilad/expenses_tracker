@@ -37,6 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _removeTransaction(val) {
+    setState(() {
+      transactions.remove(val);
+    });
+  }
+
   void startNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         context: context,
@@ -62,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             Chart(transactions),
-            TransactionsList(transactions),
+            TransactionsList(transactions, _removeTransaction),
           ],
         ),
       ),
