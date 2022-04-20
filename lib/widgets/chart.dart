@@ -42,10 +42,8 @@ class Chart extends StatelessWidget {
     return Card(
       child: Row(
         children: [
-          ...transactionsLastWeek.map((t) => ChartBar(
-              dayLetter: t['day'].toString(),
-              amount: double.parse(t['amount'].toString()),
-              percentage: getDayPercentage(double.parse(t['amount'].toString()))))
+          ...transactionsLastWeek
+              .map((t) => ChartBar(day: t['day'].toString(), amount: t['amount'] as double, percentage: getDayPercentage(t['amount'] as double))),
         ],
       ),
     );
