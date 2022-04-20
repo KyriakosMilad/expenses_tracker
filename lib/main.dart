@@ -1,4 +1,5 @@
 import 'package:expenses_tracker/models/transaction.dart';
+import 'package:expenses_tracker/widgets/chart.dart';
 import 'package:expenses_tracker/widgets/new_transaction.dart';
 import 'package:expenses_tracker/widgets/transactions_list.dart';
 import 'package:flutter/material.dart';
@@ -60,9 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Card(
-              child: Text('CHART'),
-            ),
+            Chart(transactions),
             TransactionsList(transactions),
           ],
         ),
