@@ -60,6 +60,7 @@ class TransactionsList extends StatelessWidget {
                   fit: FlexFit.tight,
                   child: Container(
                     child: IconButton(
+                        color: Colors.red,
                         onPressed: () {
                           _removeTransactionFunc(_transactions[idx]);
                         },
