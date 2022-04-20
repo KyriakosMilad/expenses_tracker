@@ -18,40 +18,53 @@ class TransactionsList extends StatelessWidget {
         itemBuilder: (ctx, idx) {
           return Card(
             child: Row(children: [
-              Container(
-                child: Text(
-                  '\$${_transactions[idx].amount.toStringAsFixed(2)}',
-                  style: TextStyle(fontSize: 18),
+              Flexible(
+                flex: 1,
+                fit: FlexFit.tight,
+                child: Container(
+                  child: FittedBox(
+                      child: Text(
+                    '\$${_transactions[idx].amount.toStringAsFixed(2)}',
+                    style: TextStyle(fontSize: 18),
+                  )),
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                    color: Colors.black45,
+                  )),
                 ),
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    border: Border.all(
-                  color: Colors.black45,
-                )),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text(
-                      _transactions[idx].title,
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Flexible(
+                flex: 2,
+                fit: FlexFit.tight,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: FittedBox(
+                          child: Text(
+                        _transactions[idx].title,
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      )),
                     ),
-                  ),
-                  Text(
-                    DateFormat().format(_transactions[idx].date),
-                    style: TextStyle(color: Colors.black54),
-                  ),
-                ],
+                    Text(
+                      DateFormat().format(_transactions[idx].date),
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                  ],
+                ),
               ),
-              Container(
-                child: IconButton(
-                    onPressed: () {
-                      _removeTransactionFunc(_transactions[idx]);
-                    },
-                    icon: Icon(Icons.delete)),
-              )
+              Flexible(
+                  flex: 1,
+                  fit: FlexFit.tight,
+                  child: Container(
+                    child: IconButton(
+                        onPressed: () {
+                          _removeTransactionFunc(_transactions[idx]);
+                        },
+                        icon: Icon(Icons.delete)),
+                  )),
             ]),
           );
         },
