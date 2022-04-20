@@ -61,11 +61,13 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
             ),
             Container(
+              color: Colors.cyan,
               child: TextButton(
-                  onPressed: () {
-                    _addTransaction();
-                  },
-                  child: Text('Add transaction')),
+                onPressed: () {
+                  _addTransaction();
+                },
+                child: Text('Add transaction', style: TextStyle(color: Colors.white)),
+              ),
               margin: EdgeInsets.only(top: 10),
             )
           ],
